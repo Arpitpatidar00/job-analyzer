@@ -78,7 +78,9 @@ function logEntry(level, feature, message, data = {}) {
   const line = JSON.stringify(entry) + '\n';
 
   try {
-    fs.appendFileSync(LOG_PATH, line);
+    if (!process.env.VERCEL) {
+      fs.appendFileSync(LOG_PATH, line);
+    }
   } catch (e) {
     console.error('[JobFill Logger] Failed to write log:', e.message);
   }

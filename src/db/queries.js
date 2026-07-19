@@ -10,7 +10,9 @@ const os = require('os');
 
 // ─── DB Initialization ──────────────────────────────────────────────────────
 
-const DB_DIR = path.join(os.homedir(), '.jobfill-pro');
+const DB_DIR = process.env.VERCEL 
+  ? '/tmp' 
+  : path.join(os.homedir(), '.jobfill-pro');
 const DB_PATH = path.join(DB_DIR, 'jobs.db');
 
 let db;
