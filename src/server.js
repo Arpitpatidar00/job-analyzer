@@ -99,14 +99,21 @@ async function start() {
   );
 
   // Start server
-  app.listen(PORT, () => {
-    console.log(`\n🚀 Server running on http://localhost:${PORT}`);
-    console.log(`📊 Dashboard API: http://localhost:${PORT}/api/jobs/stats`);
-    console.log(`❤️  Health check:  http://localhost:${PORT}/api/health\n`);
-  });
+  if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+      console.log(`\n🚀 Server running on http://localhost:${PORT}`);
+      console.log(`📊 Dashboard API: http://localhost:${PORT}/api/jobs/stats`);
+      console.log(`❤️  Health check:  http://localhost:${PORT}/api/health\n`);
+    });
+  } else {
+    console.log("⚡ Running in Vercel Serverless environment");
+  }
 }
 
+// Only start when executing directly or not in Vercel
 start().catch((err) => {
   console.error("Fatal startup error:", err);
   process.exit(1);
 });
+
+module.exports = app;
