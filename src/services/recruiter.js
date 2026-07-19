@@ -5,7 +5,6 @@
 
 const { logger } = require('./logger');
 const { tier1Search } = require('./discovery-tier1');
-const puppeteer = require('puppeteer');
 
 // ─── Tier 1: Email Pattern Generation ────────────────────────────────────────
 
@@ -82,6 +81,8 @@ async function tier2PuppeteerScrape(domains, providedUrls = []) {
 
   let browser;
   try {
+    const puppeteerModule = await import('puppeteer');
+    const puppeteer = puppeteerModule.default || puppeteerModule;
     browser = await puppeteer.launch({
       headless: 'new',
       args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
