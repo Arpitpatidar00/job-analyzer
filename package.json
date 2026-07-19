@@ -1,0 +1,29 @@
+{
+  "name": "jobfill-pro-backend",
+  "version": "2.0.0",
+  "description": "JobFill Pro v2 — Local backend for AI recruiter outreach",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "better-sqlite3": "^11.7.0",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "deep-email-validator": "^0.1.27",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.0",
+    "nodemailer": "^6.9.16",
+    "playwright": "^1.60.0",
+    "puppeteer": "^25.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
